@@ -1,0 +1,46 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Display welcome message
+        Console.WriteLine("Welcome to Package Express. Please follow the instructions below.");
+
+        // Prompt for package weight and convert input to integer
+        Console.WriteLine("Please enter the package weight:");
+        int packageWeight = Convert.ToInt32(Console.ReadLine());
+
+        // Check if the package is too heavy to be shipped
+        if (packageWeight > 50)
+        {
+            Console.WriteLine("Package too heavy to be shipped via Package Express. Have a good day.");
+            return;  // End the program
+        }
+
+        // Prompt for package dimensions
+        Console.WriteLine("Please enter the package width:");
+        int packageWidth = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Please enter the package height:");
+        int packageHeight = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Please enter the package length:");
+        int packageLength = Convert.ToInt32(Console.ReadLine());
+
+        // Check if the total dimensions are too large to be shipped
+        if ((packageWidth + packageHeight + packageLength) > 50)
+        {
+            Console.WriteLine("Package too big to be shipped via Package Express.");
+            return;  // End the program
+        }
+
+        // Calculate the quote: (width * height * length) * weight / 100
+        int totalDimensions = packageWidth * packageHeight * packageLength;
+        decimal quote = (totalDimensions * packageWeight) / 100m;
+
+        // Display the quote as a dollar amount
+        Console.WriteLine("Your estimated total for shipping this package is: $" + quote.ToString("0.00"));
+        Console.WriteLine("Thank you!");
+    }
+}
